@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <!-- Metadata  -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Casper Hedegaard Hansen & Natascha Kjærsgaard">
+    <meta name="description" content="Med MealPlanner kan du nemt og hurtigt finde opksrtifter, 
+                                      der passer til dig og dine behov. Du kan tilføje dem til 
+                                      din personlige madplan, og oprette indkøbslister. Den lette 
+                                      hverdag, ligger i planlægningen.">
+
+    <!-- Details -->
+    <title>MealPlanner</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body id="app">
+    <!-- Navigation -->
+    <nav class="navigation">
+        <a href="#/" class="nav-link"><span class="material-icons">home</span>Hjem</a>
+        <a href="#/opskrifter" class="nav-link"><span class="material-icons">search</span>Søg</a>
+        <a href="#/favoritter" class="nav-link"><span class="material-icons">favorite</span>Favoritter</a>
+        <a href="#/madplan" class="nav-link"><span class="material-icons">edit_calendar</span>Madplan</a>
+        <a href="#/indkøbsliste" class="nav-link"><span class="material-icons">format_list_bulleted</span>Indkøb</a>
+    </nav>
+
+    <!-- Pages -->
+    <!-- Homepage -->
+    <section id="hjem" class="page forside">
+        <!-- Banner -->
+        <header class="header-forside">
+            <img alt="MealPlanner logo" src="img/logo.png">
+            <p>"Den lette hverdag, ligger i <br> planlægningen"</p>
+        </header>
+
+        <!-- Searchfield -> go to search page -->
+        <div onclick="goToSearch()" class="searchbar forside">
+            <span class="material-icons">search</span>
+            <input type="search" placeholder="Søg efter opskrifter eller ingredienser">
+        </div>
+
+        <!-- Quick access menu -->
+        <div class="forside-kasser">
+            <div>
+                <div onclick="goToFoodPlan()" class="box1">Madplaner<span class="material-icons">edit_calendar</span></div>
+                <div onclick="goToShoppingList()" class="box2">Indkøbsliste<span class="material-icons">format_list_bulleted</span></div>
+            </div>
+            <div>
+                <div onclick="goToSearch()" class="box3">Vegetar<span class="material-icons">spa</span></div>
+                <div onclick="goToFavorites()" class="box4">Mine favoritter<span class="material-icons">favorite</span></div>
+                <div onclick="goToFavorites()" class="box5">Mine opskrifter<span class="material-icons">star</span></div>
+            </div>
+            <div>
+                <div onclick="goToSearch()" class="box6">Opskrifter<span class="material-icons">search</span></div>
+                <div onclick="goToAddRecipe()" class="box7">Tilføj ny opskrift<span class="material-icons">add</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search recipes page -->
+    <section id="opskrifter" class="page">
+        <header class="header">
+            <!-- Searchfield-->
+            <div class="searchbar">
+                <span class="material-icons">search</span>
+                <input type="search" placeholder="Søg efter opskrifter eller ingredienser" onkeyup="search(this.value)">
+            </div>
+            <!-- Categories dropdown, not implemented -->
+            <a class="nav-link right" href="#/opskrifter"><span class="material-icons">expand_more</span></a>
+        </header>
+        <!-- Appended recipes -->
+        <section class="grid-container" id="recipes-container"></section>
+    </section>
+
+    <!-- Recipe details page -->
+    <section id="opskriftsdetaljer" class="page">
+        <header class="header text">
+            <a class="nav-link left" href="#/opskrifter"><span class="material-icons">chevron_left</span></a>
+            <h2>Detaljer</h2>
+        </header>
+        <!-- Appended recipe details -->
+        <section class="content-container" id="recipe-detail-container"></section>
+    </section>
+
+    <!-- Favorites page -->
+    <section id="favoritter" class="page">
+        <header class="header">
+            <!-- Searchfield for favorities and own recipes -->
+            <div class="searchbar">
+                <span class="material-icons">search</span>
+                <input type="search" placeholder="Søg efter opskrifter eller ingredienser" onkeyup="searchFavorites(this.value)">
+            </div>
+            <!-- Create new recipe -->
+            <a class="nav-link right" href="#/opretopskrift"><span class="material-icons">add</span></a>
+        </header>
+        <!-- Appended favorites -->
+        <h2 class="header-padding">Favoritter</h2>
+        <section class="grid-container" id="favorites-container"></section>
+        <!-- Appended own recipes -->
+        <h2 class="header-padding">Mine opskrifter</h2>
+        <section class="grid-container" id="own-recipes-container"></section>
+    </section>
+
+
+    <!-- Add new recipe page -->
+    <section id="opretopskrift" class="page">
+        <header class="header text">
+            <a class="nav-link left" href="#/favoritter"><span class="material-icons">chevron_left</span></a>
+            <h2>Opret opskrift</h2>
+        </header>
+        <!-- New recipe input form -->
+        <form class="add-recipe"> 
+            <!-- Title input -->
+            <h4>Titel</h4>
+            <input type="text" name="name" placeholder="Navn på opskrift" id="input-name" />
+            
+            <!-- Image input -->
+            <h4>Tilføj et billede af retten</h4>
+            <input type="text" name="img" placeholder="Image URL" id="input-img" />
+
+            <!-- Description input-->
+            <h4>Beskrivelse</h4>
+            <textarea class="add-decription" rows="6" name="description" form="usrform" id="input-description" placeholder="Indsæt beskrivelse af opskrift..."></textarea>
+
+            <!-- Appended ingredients and input -->
+            <h4>Ingredienser</h4>
+            <!-- Appended ingredients-->
+            <table id="ingredients-input"></table>
+            <!-- Ingredient input -->
+            <div class="add-ingredients">
+                <div>
+                    <h5>Mængde</h5>
+                    <input type="number" name="amount" placeholder="F.eks. 85" id="input-amount" />
+                </div>
+                <div>
+                    <h5>Måleenhed</h5>
+                    <input type="text" name="unit" placeholder="F.eks. dl" id="input-unit" />
+                </div>
+                <div>
+                    <h5>Ingredienser</h5>
+                    <input type="text" name="ingredients" placeholder="F.eks. mælk" id="input-ingredients" />
+                </div>
+                <button type="button" onclick="addIngredient()">Tilføj</button>
+            </div>
+
+            <!-- Appended procedure and input-->
+            <h4>Fremgangsmåde</h4>
+            <!-- Appended procedures -->
+            <ul id="procedure-input"></ul>
+            <!-- Procedure input -->
+            <div class="add-procedure">
+                    <input type="text" name="procedure" placeholder="Tilføj step" id="input-procedure" />
+                    <button type="button" onclick="addProcedure()">Tilføj</button>
+            </div>
+            <button class="submit" type="button" name="button" onclick="saveRecipe()"> Tilføj opskrift </button>
+        </form>
+    </section>
+
+    <!-- Food plans page -->
+    <section id="madplan" class="page">
+        <header class="header text">
+            <h2>Madplan</h2>
+            <!-- Create new food plan-->
+            <a class="nav-link right" href="#/opretmadplan"><span class="material-icons">add</span></a>
+        </header>
+        <!-- Appended food plans -->
+        <section class="grid-container" id="foodplans-container"></section>
+    </section>
+
+    <!-- Create new food plan page -->
+    <section id="opretmadplan" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/madplan"><span class="material-icons">chevron_left</span></a>
+            <h2>Opret madplan</h2>
+        </header>
+        <!-- New food plan form -->
+        <form>
+            <h4>Din madplan:</h4>
+            <input class="full" type="text" name="name" placeholder="f.eks. uge 23" id="foodplan-name">
+            <button class="submit" type="button" onclick="createFoodPlan()">Opret madplan</button>
+        </form>
+    </section>
+
+    <!-- Food plan details page -->
+    <section id="madplandetaljer" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/madplan"><span class="material-icons">chevron_left</span></a>
+            <h2 id="food-plan-title">Madplan</h2>
+            <!-- Delete food plan -->
+            <span id="remove-food-plan" class="material-icons right" onclick="removeFoodPlan()">delete</span>
+        </header>
+        <!-- Appended food plan details -->
+        <section class="grid-container" id="food-plan-details"></section>
+    </section>
+
+    <!-- Pick food plan page -->
+    <section id="vælgmadplan" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/opskrifter"><span class="material-icons">chevron_left</span></a>
+            <h2>Vælg madplan</h2>
+            <!-- Create new food plan -->
+            <a class="nav-link right" href="#/opretmadplan"><span class="material-icons">add</span></a>
+        </header>
+        <!-- Appended food plan list -->
+        <section class="grid-container" id="pick-food-plan-container"></section>
+    </section>
+
+    <!-- Pick day from food plan page -->
+    <section id="vælgdag" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/vælgmadplan"><span class="material-icons">chevron_left</span></a>
+            <h2>Vælg dag</h2>
+        </header>
+        <!-- Appended days from food plan -->
+        <section class="grid-container" id="pick-day-container"></section>
+    </section>
+    
+    <!-- Shopping lists page -->
+    <section id="indkøbsliste" class="page">
+        <header class="header text">
+            <h2>Indkøbslister</h2>
+            <!-- Create new shopping list -->
+            <a class="nav-link right" href="#/opretindkøbsliste"><span class="material-icons">add</span></a>
+        </header>
+        <!-- Appended shopping lists -->
+        <section class="grid-container" id="shoppinglists-container"></section>
+    </section>
+
+    <!-- Shopping list details page -->
+    <section id="indkøbslistedetaljer" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/indkøbsliste"><span class="material-icons">chevron_left</span></a>
+            <h2 id="shopping-list-title">Indkøbsliste</h2>
+            <!-- Delete shopping list -->
+            <span id="remove-shopping-list" class="material-icons right" onclick="removeShoppingList()">delete</span>
+        </header>
+        <!-- Appended shopping list details -->
+        <section class="grid-container" id="shopping-list-details"></section>
+    </section>
+
+    <!-- Create new shopping list page -->
+    <section id="opretindkøbsliste" class="page">
+        <header class="header text">
+            <!-- Return button -->
+            <a class="nav-link left" href="#/indkøbsliste"><span class="material-icons">chevron_left</span></a>
+            <h2>Opret indkøbsliste</h2>
+        </header>
+        <!-- New shopping list input form -->
+        <form>
+            <!-- Name input -->
+            <h4>Navn på indkøbsliste:</h4>
+            <input class="full" type="text" name="name" placeholder="f.eks. uge 23" id="shoppinglist-name">
+
+            <!-- Appended ingredient list and input -->
+            <h4>Ingredienser</h4>
+            <!-- Appended ingredient list -->
+            <div id="ingredient-list"></div>
+            <!-- Input -->
+            <div class="add-ingredients">
+                <div>
+                    <h5>Ingrediens</h5>
+                    <input type="text" name="name" placeholder="Mælk" id="ingredient-name" />
+                </div>
+                <div>
+                    <h5>Mængde</h5>
+                    <input type="text" name="amount" placeholder="1 L" id="ingredient-amount" />
+                </div>
+                <button type="button" onclick="addIngredientToShoppingList()">Tilføj</button>
+             </div>
+            <button class="submit" type="button" onclick="createShoppinglist()">Opret indkøbsliste</button>
+        </form>
+    </section>
+
+    <!--'+' button modal -->
+    <div class="click-menu-wrapper" onclick="hideMenu()">
+        <div class="click-menu"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>

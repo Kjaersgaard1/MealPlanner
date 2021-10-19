@@ -1,0 +1,867 @@
+/* -----------------------------------------------
+                      Reset
+----------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* -----------------------------------------------
+                      Theme
+----------------------------------------------- */
+:root {
+    --green: #A8C1A6;
+    --light-green: rgb(172, 198, 201);
+    --light-grey: #EDEDED;
+    --text-color-light: #ffffff;
+    --text-color-dark: #707070;
+    --text-color-opacity: rgba(70, 70, 70, 0.6);
+    --white: #fff;
+    --font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+    color: var(--text-color-dark);
+    font-family: var(--font-family);
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+h3 {
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0.5em 0 0.2em;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* -----------------------------------------------
+                      Navigation
+----------------------------------------------- */
+/* Align navbar at bottom of page and align icons */
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    
+    height: 4em;
+    background-color: var(--white);
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+/* Align icon with title and styling */
+.navigation a {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color-opacity);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+}
+
+/* Icon size */
+.navigation a span {
+    font-size: 4em;
+    margin-bottom: 0.05em;
+}
+
+/* Change the color of links on hover */
+.navigation a:hover {
+    color: var(--text-color-dark);
+}
+
+/* Add a color to the active/current link */
+.navigation a.active {
+    color: var(--green);
+}
+
+/* -----------------------------------------------
+                      Header
+----------------------------------------------- */
+.header {
+    background-color: var(--green);
+    color: var(--text-color-light);
+    position: fixed;
+    height: 4em;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    line-height: 4em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    padding: 0 1em;
+}
+
+.header.text {
+    justify-content: center;
+}
+
+.header h2 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.header .left {
+    left: 1em;
+}
+
+.header .right {
+    right: 1em;
+}
+
+/* Small descirption text */
+.small-text {
+    color:rgba(0, 0, 0, 0.3);
+    font-size: 1;
+}
+
+/* -----------------------------------------------
+                      Forside
+----------------------------------------------- */
+.page.forside{
+padding-top: 0;
+}
+
+/* Banner on frontpage */
+.header-forside {
+    background-color: var(--green);
+    color: var(--text-color-light);
+    height: 13em;
+    display: block;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.header-forside p {
+    text-align: center;
+}
+
+.header-forside img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding-top: 20px;
+}
+
+.searchbar.forside{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.forside-kasser{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: calc(100% - 3em);
+    display: flex;
+    flex-direction: column;
+}
+
+.forside-kasser > div {
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+.forside-kasser > div > div {
+    padding: 1em;
+    flex-grow: 1;
+    border-radius: 10px;
+    height: 3.5em;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.forside-kasser > div > div span {
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+}
+
+.forside-kasser > div > div:first-child {
+    margin-right: 0.5em;
+}
+
+.forside-kasser > div:nth-child(2) > div:last-child {
+    margin-left: 0.5em;
+}
+
+/* Background color frontpage quick access */
+.box1 { background-color: #C55D98 }
+.box2 { background-color: #C55D5D }
+.box3 { background-color: #5DC567 }
+.box4 { background-color: #825CD9 }
+.box5 { background-color: #5D84C5 }
+.box6 { background-color: #E7A34A }
+.box7 { background-color: #5DC5B4 }
+
+/* -----------------------------------------------
+                      Search
+----------------------------------------------- */
+.searchbar {
+    background-color: var(--white);
+    border-radius: 50px;
+    width: calc(100% - 3em);
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Icon */
+.searchbar span {
+    padding-left: 5px;
+    color: var(--text-color-dark)
+}
+
+.searchbar input{
+    border: none;
+    width: 87%;
+}
+
+/* -----------------------------------------------
+            Return, delete/add buttons
+----------------------------------------------- */
+
+.left, .right {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.left span, .right span {
+    font-size: 2em;
+}
+
+/* -----------------------------------------------
+                      Pages
+----------------------------------------------- */
+.page {
+    display: none;
+    /*min heigh is screen heigh minus height of navigation and header */
+    min-height: calc(100vh - 8em);
+    background: var(--light-grey);
+    animation: fadeIn 0.4s;
+    /* padding equals height of navigation and header */
+    padding: 4em 0;
+}
+
+/* ---------- Animations ---------- */
+/* Fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------- Spinning loader ---------- */
+#loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999999;
+    overflow: hidden;
+    background: var(--loader-background-color);
+    text-align: center;
+}
+
+.spinner {
+    border: 5px solid var(--light-grey);
+    border-radius: 50%;
+    border-top: 5px solid var(--light-green);
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 1s linear infinite;
+    /* Safari */
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+}
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* -----------------------------------------------
+                      Forms
+----------------------------------------------- */
+form {
+    padding: 2em 1em 2.5em;
+}
+
+form input {
+    padding: 0.25em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border: none;
+}
+
+form input.full {
+    padding: 0.5em;
+    margin: 0.5em 0 2em 0;
+    width: calc(100% - 1em);
+}
+
+form input.third {
+    padding: 0.25em;
+    margin: 1em 0;
+    width: 25%;
+}
+
+form button {
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 0.5em;
+    border-radius: 50px;
+    font-size: 1em;
+    color: var(--text-color-light);
+    background-color: var(--green);
+}
+
+form button.submit {
+    margin-top: 1em;
+    padding: 8px 30px 8px 30px;
+    margin-top: 30px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+article button {
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    color: var(--text-color-light);
+    background-color: var(--green);
+}
+
+.add-recipe input{
+    border: none;
+    width: 95%;
+    padding: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.add-decription{
+    width: 95%;
+    resize: none;
+    border: none;
+    font-family: var(--font-family);
+    padding: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.add-recipe h4:first-child {
+    margin: 0 0 4px 0;
+}
+
+.add-recipe h4 {
+    margin: 24px 0 4px 0;
+}
+
+.add-ingredients {
+    margin-top: 1em;
+    display: flex;
+    align-items: flex-end;
+}
+
+.add-ingredients div {
+    max-width: 25%;
+}
+
+.add-ingredients button, .add-procedure button {
+    width: 25%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.add-ingredients input {
+    width: 70%
+}
+
+.add-procedure input {
+    width: 67.5%;
+}
+
+.add-procedure {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* -----------------------------------------------
+                   Grid container
+----------------------------------------------- */
+.content-container {
+    padding: 1em;
+}
+
+.header-padding {
+    padding: 1em 0.5em 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1em;
+    gap: 1em;
+}
+
+@media (min-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+/* -----------------------------------------------
+                   Recipes
+----------------------------------------------- */
+/* Article wrapper of a single recipe */
+.grid-container > .recipe-container {
+    background-color: var(--white);
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+}
+
+/* Icon size */
+.grid-container > .recipe-container span {
+    font-size: 24px;
+}
+
+/* Text size */
+.recipe-container h2, .recipe-container p {
+    font-size: 13px;
+}
+
+/* White box over and below image */
+.recipe-container .top, .recipe-container .bottom {
+    position: relative;
+    height: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.recipe-container .bottom {
+    justify-content: space-between;
+    padding: 0 0.5em;
+}
+
+/* Icons in top left */
+.recipe-container .top > div {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.5em;
+}
+
+.recipe-container .top > div > img {
+    width: 1.25em;
+    margin-right: 2px;
+    display: block;
+}
+
+/* Favorite icon top right */
+.recipe-container .top > span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+}
+
+/* Bottom elements */
+.recipe-container .bottom > p {
+    display: flex;
+    align-items: center;
+}
+
+/* Margin between text and clock icon */
+.recipe-container .bottom p:nth-child(2) span {
+    margin-right: 4px;
+}
+
+/* Image wrapper to contain image size, hide overflow */
+.recipe-container .image-wrapper {
+    width: 100%;
+    height: 8em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-container img {
+    width: 100%;
+    display: block;
+}
+
+/* Hide details from own recipes */
+#own-recipes-container .favorite, #own-recipes-container .bottom {
+    display: none;
+}
+
+.hide-details .favorite, .hide-details .bottom {
+    display: none !important;
+}
+
+/* -----------------------------------------------
+                  Recipe details
+----------------------------------------------- */
+.recipe-details-container .icons {
+    display: flex;
+}
+
+.recipe-details-container .icons > img {
+    width: 1.25em;
+    margin-right: 2px;
+    display: block;
+}
+
+.recipe-details-container p {
+    color: #A2A2A2;
+    margin-bottom: 15px;
+}
+
+ul {
+    padding-left: 1em;
+    color: #A2A2A2;
+}
+
+ul li {
+    margin-bottom: 5px;
+
+}
+
+.dropdown {
+    position: relative;
+    width: 150px;
+    margin: 2em 0;
+}
+
+.dropdown::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '>';
+    color: var(--white);
+    transform: rotate(90deg);
+    height: 30px;
+    width: 30px;
+    background-color: var(--green);
+    
+    top: 0;
+    right: 0;
+    
+    position: absolute;
+    pointer-events: none;
+}
+
+.dropdown select {
+    width: 150px;
+    padding: 0.5em;
+    appearance: none;
+    
+    display: block;
+    background-image: none;
+    border: 1px solid #cccccc;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+#ingredients-table, #ingredients-input {
+    margin-bottom: 2em;
+}
+
+#ingredients-table td, #ingredients-input td {
+    padding: 0 5px;
+    color: #A2A2A2;
+}
+
+#ingredients-table td:first-child, #ingredients-input td:first-child{
+    padding: 0 1em 0 0;
+}
+
+.recipe-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0;
+}
+
+.recipe-name div:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.recipe-name h2 {
+    font-size: 1.2em;
+}
+
+.recipe-details-container .bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.recipe-details-container .bottom > p {
+    display: flex;
+    align-items: center;
+    color: var(--text-color-dark);
+}
+
+/* Margin between text and clock icon */
+.recipe-details-container .bottom p:nth-child(2) span {
+    margin-right: 4px;
+}
+
+.recipe-details-container .image-wrapper {
+    width: 100%;
+    height: 12em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-details-container .image-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+/* -----------------------------------------------
+                    Food plan
+----------------------------------------------- */
+
+.food-plan {
+    background-color: var(--white);
+    display: flex;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    position: relative;
+
+}
+
+.food-plan .image-wrapper {
+    width: calc(100% / 3 + 3em);
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.food-plan .image-wrapper img {
+    width: 200%;
+    max-height: 130px;
+}
+
+.food-plan .text-wrapper {
+    width: calc(100% / 3 * 2 - 1em);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 0.5em 1em;
+}
+
+.food-plan h2, .food-plan h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+.food-plan h2 {
+    font-weight: 400;
+    position: relative;
+}
+
+.food-plan h2::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 1px;
+    width: 3em;
+    bottom: 0;
+    left: 0;
+}
+
+.food-plan h3 {
+    font-weight: 600;
+}
+
+#foodplan-name {
+    border: none;
+    padding: 0.5em 0.25em;
+}
+
+.food-plan button {
+    margin-top: 0.2em;
+    padding: 0.5em 1em;
+}
+
+.remove-button {
+    position: absolute;
+    right: 0.33em;
+    top: 0.25em;
+    color: var(--text-color-dark);
+    z-index: 99;
+}
+
+/* -----------------------------------------------
+                   Click menu
+----------------------------------------------- */
+.click-menu-wrapper {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.click-menu {
+    background-color: var(--white);
+    min-width: 215px;
+    border-radius: 10px;
+    z-index: 999;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.click-menu span {
+    margin-right: 0.25em;
+}
+
+.click-menu div {
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    border-bottom: 1px solid black;
+}
+
+.click-menu div:last-child {
+    border-bottom: none;
+}
+
+/* -----------------------------------------------
+                  Shopping list
+----------------------------------------------- */
+
+.check-box-wrapper, .ingredient-item-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ingredient-item-wrapper {
+    margin-bottom: 0.5em;
+}
+
+.check-box-wrapper > div, .ingredient-item-wrapper > div {
+    padding: 0.5em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.shopping-list-item {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    background-color: var(--white);
+    color: var(--text-color-dark);
+    display: flex;
+    justify-content: space-between;
+}
+
+#shoppinglists-container .shopping-list-item:hover {
+    cursor: pointer;
+}
+
+#shoppinglists-container .shopping-list-item, .check-box-wrapper .shopping-list-item, .ingredient-item-wrapper .shopping-list-item {
+    margin-top: 0;
+}
+
+.check-box {
+    margin-left: 0.5em;
+    justify-content: center;
+    max-width: 25px;
+    background-color: #FFC790;
+    color: white;
+}
+
+.remove-box {
+    margin-left: 0.5em;
+    justify-content: center;
+    max-width: 25px;
+    background-color: #C55D5D;
+    color: white;
+}
+
+.checked {
+    background-color: var(--green);
+}
